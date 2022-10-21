@@ -1,48 +1,35 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+// Styles
+// import '../src/assets/css/styles.css';
+// import '../src/assets/css/normalize.css';
+// import '../src/assets/css/App.css'
 
-//components, importamos los componentes
+// components
 import Header from './components/Header';
-import Nav from './components/Nav';
-import MainR from './components/MainR'; 
+import Navegacion from './components/Navegacion';
+import Vite from './components/Vite';
 
-function App() { //Este es el componente padre de todo y puede pasarle props a sus hijos
-  const [count, setCount] = useState(0)
+function App() {
 
-  //un prop es pasar parámetros, de padre a hijo
+  const [count, setCount] = useState(0);  
 
   return (
-    <div className="App">
+    // <> Fragment lo utilizamos para agrupar varias etiquetas HTML no ve en el navegador  
+    <>
+     {/* Atraves de los props podemos enviar de componente padre a hijos valores de variables y funciones como parametros  */}
       <Header
-        count = {count} //mire que pasé la variable count de la function App
-      /> {/*Aqui estoy colocando el Header que importé en la linea 6*/}
-      
-      <Nav/>
-      <MainR/>
+        count={count}
+      />
 
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-    
+      <Navegacion/>
+
+      <Vite
+        count={count}
+        setCount={setCount}
+      />
+      
+    </>
   )
 }
 
